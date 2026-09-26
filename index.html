@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ensey Cafe — Sumqayıt</title>
+
+<style>
+:root{
+  --bg:#f7f2eb;
+  --card:#fffdf9;
+  --brown:#2a1d17;
+  --coffee:#9b603b;
+  --light:#eadfd3;
+  --text:#30241e;
+  --muted:#766960;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.container{
+  width:92%;
+  max-width:1150px;
+  margin:auto;
+}
+
+/* NAVBAR */
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(247,242,235,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--light);
+}
+
+.nav{
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-family:Georgia,serif;
+  font-size:27px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.links{
+  display:flex;
+  gap:28px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.links a:hover{
+  color:var(--coffee);
+}
+
+.button{
+  display:inline-block;
+  padding:13px 19px;
+  border-radius:30px;
+  font-weight:bold;
+  font-size:14px;
+  border:1px solid var(--light);
+  transition:.2s;
+}
+
+.button:hover{
+  transform:translateY(-2px);
+}
+
+.dark{
+  background:var(--brown);
+  color:white;
+}
+
+/* HERO */
+
+.hero{
+  padding:75px 0;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:45px;
+  align-items:center;
+}
+
+.small-title{
+  color:var(--coffee);
+  font-size:12px;
+  letter-spacing:3px;
+  font-weight:bold;
+  text-transform:uppercase;
+}
+
+h1{
+  font-family:Georgia,serif;
+  font-size:clamp(55px,8vw,90px);
+  line-height:.9;
+  margin:18px 0 25px;
+}
+
+.hero-text{
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.7;
+  max-width:550px;
+}
+
+.buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+
+.hero-image{
+  height:450px;
+  border-radius:32px;
+  background:
+  linear-gradient(135deg,rgba(30,18,10,.15),rgba(30,18,10,.45)),
+  url("https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=85")
+  center/cover;
+  position:relative;
+  overflow:hidden;
+}
+
+.rating{
+  position:absolute;
+  bottom:25px;
+  left:25px;
+  background:white;
+  padding:11px 16px;
+  border-radius:30px;
+  font-weight:bold;
+}
+
+/* SECTIONS */
+
+section{
+  padding:75px 0;
+}
+
+.section-title{
+  margin-bottom:30px;
+}
+
+.section-title h2{
+  font-family:Georgia,serif;
+  font-size:43px;
+  margin-top:8px;
+}
+
+.section-title p{
+  color:var(--muted);
+  max-width:550px;
+  line-height:1.6;
+  margin-top:10px;
+}
+
+/* MENU */
+
+.categories{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding-bottom:12px;
+  margin-bottom:22px;
+}
+
+.category{
+  white-space:nowrap;
+  padding:11px 17px;
+  border:1px solid var(--light);
+  background:var(--card);
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.category.active,
+.category:hover{
+  background:var(--brown);
+  color:white;
+}
+
+.menu{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.item{
+  background:var(--card);
+  border:1px solid var(--light);
+  border-radius:20px;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.item h3{
+  font-size:17px;
+  margin-bottom:7px;
+}
+
+.item p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+
+.price{
+  color:var(--coffee);
+  font-weight:bold;
+  white-space:nowrap;
+}
+
+/* INFO */
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.info{
+  background:var(--brown);
+  color:white;
+  padding:28px;
+  border-radius:23px;
+}
+
+.info small{
+  color:#cdb9ab;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.info h3{
+  margin:12px 0;
+  font-size:20px;
+}
+
+.info p{
+  color:#ded2ca;
+  line-height:1.6;
+}
+
+/* FEATURES */
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.feature{
+  background:var(--card);
+  border:1px solid var(--light);
+  padding:22px;
+  border-radius:20px;
+}
+
+.feature b{
+  display:block;
+  margin-bottom:7px;
+}
+
+.feature span{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* CTA */
+
+.cta{
+  background:linear-gradient(135deg,#291c16,#70442c);
+  color:white;
+  padding:45px;
+  border-radius:30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:25px;
+}
+
+.cta h2{
+  font-family:Georgia,serif;
+  font-size:40px;
+  margin:10px 0;
+}
+
+.cta p{
+  color:#dfd1c8;
+}
+
+.cta .button{
+  background:white;
+  color:var(--brown);
+}
+
+/* FOOTER */
+
+footer{
+  border-top:1px solid var(--light);
+  padding:35px 0;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.footer{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .links{
+    display:none;
+  }
+
+  .hero{
+    padding:45px 0;
+  }
+
+  .hero-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-image{
+    height:350px;
+  }
+
+  .menu{
+    grid-template-columns:1fr;
+  }
+
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .features{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .cta{
+    display:block;
+    padding:30px;
+  }
+
+  .cta .buttons{
+    margin-top:20px;
+  }
+}
+
+@media(max-width:480px){
+
+  h1{
+    font-size:58px;
+  }
+
+  .hero-text{
+    font-size:16px;
+  }
+
+  .hero-image{
+    height:300px;
+  }
+
+  .features{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .item{
+    padding:16px;
+  }
+
+  .cta h2{
+    font-size:32px;
+  }
+
+  .footer{
+    flex-direction:column;
+  }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+<div class="container nav">
+
+<a href="#" class="logo">ENSEY</a>
+
+<div class="links">
+<a href="#menu">Menyu</a>
+<a href="#about">Haqqımızda</a>
+<a href="#contact">Əlaqə</a>
+</div>
+
+<a
+class="button dark"
+href="https://wolt.com/az/aze/sumgait/restaurant/ensey-kafe"
+target="_blank">
+Wolt-da sifariş
+</a>
+
+</div>
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+<div class="container hero-grid">
+
+<div>
+
+<div class="small-title">
+Coffee • Food • Cozy
+</div>
+
+<h1>
+Ensey<br>
+Cafe
+</h1>
+
+<p class="hero-text">
+Sumqayıt bulvarında rahat atmosfer,
+dadlı yeməklər, qəhvə və dostlarla
+xoş vaxt üçün cozy məkan.
+</p>
+
+<div class="buttons">
+
+<a href="#menu" class="button dark">
+Menyuya bax →
+</a>
+
+<a
+href="https://www.instagram.com/enseycafe"
+target="_blank"
+class="button">
+Instagram ↗
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-image">
+
+<div class="rating">
+★ 4.6 · 9 rəy
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- MENU -->
+
+<section id="menu">
+
+<div class="container">
+
+<div class="section-title">
+
+<div class="small-title">
+Dadlı seçimlər
+</div>
+
+<h2>Menyu</h2>
+
+<p>
+Ensey Cafe menyusundan seçilmiş yeməklər.
+Qiymətlər AZN ilə göstərilib.
+</p>
+
+</div>
+
+
+<div class="categories">
+
+<button
+class="category active"
+onclick="filterMenu('all',this)">
+Hamısı
+</button>
+
+<button
+class="category"
+onclick="filterMenu('burger',this)">
+Burger & Fast Food
+</button>
+
+<button
+class="category"
+onclick="filterMenu('soup',this)">
+Şorbalar
+</button>
+
+<button
+class="category"
+onclick="filterMenu('pizza',this)">
+Pizza
+</button>
+
+<button
+class="category"
+onclick="filterMenu('salad',this)">
+Salatlar
+</button>
+
+<button
+class="category"
+onclick="filterMenu('lahmacun',this)">
+Lahmacun & Pide
+</button>
+
+<button
+class="category"
+onclick="filterMenu('drink',this)">
+İçkilər
+</button>
+
+</div>
+
+
+<div class="menu" id="menu">
+
+
+<!-- BURGER -->
+
+<div class="item burger">
+
+<div>
+<h3>Toyuq Burger + Kartof Fri</h3>
+
+<p>
+Toyuq əti, özəl sous, burger pendiri,
+turşu xiyar, pomidor, mayonez və ketçup.
+</p>
+</div>
+
+<span class="price">₼9.00</span>
+
+</div>
+
+
+<div class="item burger">
+
+<div>
+<h3>Ət Burger + Kartof Fri</h3>
+
+<p>
+Ət, özəl sous, burger pendiri,
+turşu xiyar, pomidor, mayonez və ketçup.
+</p>
+</div>
+
+<span class="price">₼10.50</span>
+
+</div>
+
+
+<div class="item burger">
+
+<div>
+<h3>Nuggets</h3>
+
+<p>
+Xırtıldayan toyuq filesi və kartof fri.
+</p>
+</div>
+
+<span class="price">₼8.40</span>
+
+</div>
+
+
+<div class="item burger">
+
+<div>
+<h3>Şaurma</h3>
+
+<p>
+Özəl sous, turşu xiyar, kahı,
+kartof, toyuq filesi və souslar.
+</p>
+</div>
+
+<span class="price">₼6.00</span>
+
+</div>
+
+
+<div class="item burger">
+
+<div>
+<h3>Sezar Roll</h3>
+
+<p>
+Aysberq kahı, parmezan, çeri pomidor,
+toyuq filesi, suxarik və kartof fri.
+</p>
+</div>
+
+<span class="price">₼10.00</span>
+
+</div>
+
+
+<!-- SOUP -->
+
+<div class="item soup">
+
+<div>
+<h3>Dovğa</h3>
+<p>Qatıq, yumurta, düyü, göyərti və suxarik.</p>
+</div>
+
+<span class="price">₼5.50</span>
+
+</div>
+
+
+<div class="item soup">
+
+<div>
+<h3>Kremli Göbələk Şorbası</h3>
+<p>Göbələk, qaymaq, sarımsaq, suxarik və parmezan.</p>
+</div>
+
+<span class="price">₼5.20</span>
+
+</div>
+
+
+<div class="item soup">
+
+<div>
+<h3>Mərci</h3>
+<p>Mərci şorbası, nanə, limon və suxarik.</p>
+</div>
+
+<span class="price">₼5.00</span>
+
+</div>
+
+
+<div class="item soup">
+
+<div>
+<h3>Xarço</h3>
+<p>Mal əti, düyü, göyərti, soğan və suxarik.</p>
+</div>
+
+<span class="price">₼5.50</span>
+
+</div>
+
+
+<div class="item soup">
+
+<div>
+<h3>Toyuq Şorbası</h3>
+<p>Toyuq əti, kartof, düyü və suxarik.</p>
+</div>
+
+<span class="price">₼5.20</span>
+
+</div>
+
+
+<div class="item soup">
+
+<div>
+<h3>Düşbərə</h3>
+<p>Mal əti, soğan, nanə, limon və suxarik.</p>
+</div>
+
+<span class="price">₼6.00</span>
+
+</div>
+
+
+<!-- PIZZA -->
+
+<div class="item pizza">
+
+<div>
+<h3>Chicken BBQ Pizza</h3>
+<p>Özəl sous, mozzarella, BBQ sousu və toyuq filesi.</p>
+</div>
+
+<span class="price">₼15.20</span>
+
+</div>
+
+
+<div class="item pizza">
+
+<div>
+<h3>Pepperoni</h3>
+<p>Özəl sous, mozzarella və sucuk kolbasa.</p>
+</div>
+
+<span class="price">₼14.00</span>
+
+</div>
+
+
+<div class="item pizza">
+
+<div>
+<h3>Marqarita Pizza</h3>
+<p>Özəl sous, mozzarella və pomidor.</p>
+</div>
+
+<span class="price">₼10.40</span>
+
+</div>
+
+
+<div class="item pizza">
+
+<div>
+<h3>Qarışıq Pizza</h3>
+<p>
+Mozzarella, toyuq, göbələk, sucuk,
+sosis, bibər, zeytun və qarğıdalı.
+</p>
+</div>
+
+<span class="price">₼16.00</span>
+
+</div>
+
+
+<!-- SALAD -->
+
+<div class="item salad">
+
+<div>
+<h3>Xırt-Xırt Badımcan Salatı</h3>
+<p>Badımcan, xüsusi sous, çeri pomidor və limon.</p>
+</div>
+
+<span class="price">₼9.50</span>
+
+</div>
+
+
+<div class="item salad">
+
+<div>
+<h3>Sezar Salatı — Krevetka</h3>
+<p>Kahı, sous, pomidor, suxarik, krevetka və parmezan.</p>
+</div>
+
+<span class="price">₼15.50</span>
+
+</div>
+
+
+<div class="item salad">
+
+<div>
+<h3>Sezar Salatı — Toyuq</h3>
+<p>Kahı, sous, pomidor, suxarik, toyuq və parmezan.</p>
+</div>
+
+<span class="price">₼12.50</span>
+
+</div>
+
+
+<div class="item salad">
+
+<div>
+<h3>Vișnəli Pomidor Salatı</h3>
+<p>Pomidor, qırmızı soğan, albalı, göyərti, sous və qoz.</p>
+</div>
+
+<span class="price">₼7.40</span>
+
+</div>
+
+
+<!-- LAHMACUN -->
+
+<div class="item lahmacun">
+
+<div>
+<h3>Pendirli Lahmacun</h3>
+<p>Mal əti, pomidor, mozzarella, bibər, göyərti və limon.</p>
+</div>
+
+<span class="price">₼3.10</span>
+
+</div>
+
+
+<div class="item lahmacun">
+
+<div>
+<h3>Qozlu Lahmacun</h3>
+<p>Mal əti, pomidor, bibər, göyərti, limon və qoz.</p>
+</div>
+
+<span class="price">₼3.50</span>
+
+</div>
+
+
+<div class="item lahmacun">
+
+<div>
+<h3>Qozlu-Pendirli Lahmacun</h3>
+<p>Mal əti, mozzarella, bibər, göyərti, limon və qoz.</p>
+</div>
+
+<span class="price">₼3.90</span>
+
+</div>
+
+
+<div class="item lahmacun">
+
+<div>
+<h3>Sadə Lahmacun</h3>
+<p>Mal əti, pomidor, bibər, göyərti və limon.</p>
+</div>
+
+<span class="price">₼3.00</span>
+
+</div>
+
+
+<div class="item lahmacun">
+
+<div>
+<h3>Sucuklu Pide</h3>
+<p>Xəmir, özəl sous, mozzarella və sujuk.</p>
+</div>
+
+<span class="price">₼9.10</span>
+
+</div>
+
+
+<div class="item lahmacun">
+
+<div>
+<h3>Qiymalı-Pendirli Pide</h3>
+<p>Mal əti qiyməsi, özəl sous və mozzarella.</p>
+</div>
+
+<span class="price">₼8.50</span>
+
+</div>
+
+
+<!-- DRINK -->
+
+<div class="item drink">
+
+<div>
+<h3>Coca-Cola Classic 1L</h3>
+<p>Sərinləşdirici qazlı içki.</p>
+</div>
+
+<span class="price">₼3.00</span>
+
+</div>
+
+
+<div class="item drink">
+
+<div>
+<h3>Coca-Cola Can 0.33L</h3>
+<p>Sərinləşdirici qazlı içki.</p>
+</div>
+
+<span class="price">₼2.00</span>
+
+</div>
+
+
+<div class="item drink">
+
+<div>
+<h3>Sprite 1L</h3>
+<p>Limon və laym dadlı qazlı içki.</p>
+</div>
+
+<span class="price">₼3.00</span>
+
+</div>
+
+
+<div class="item drink">
+
+<div>
+<h3>Sirab Qazlı 500ml</h3>
+<p>Mineral su.</p>
+</div>
+
+<span class="price">₼2.00</span>
+
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="container">
+
+<div class="section-title">
+
+<div class="small-title">
+Ensey haqqında
+</div>
+
+<h2>Rahat. Dadlı. Səmimi.</h2>
+
+<p>
+Sumqayıt bulvarında dostlarla, ailə ilə
+və ya tək rahat vaxt keçirmək üçün cozy məkan.
+</p>
+
+</div>
+
+
+<div class="info-grid">
+
+<div class="info">
+
+<small>Ünvan</small>
+
+<h3>📍 Bulvar küçəsi</h3>
+
+<p>
+Nəsimi park, Sumqayıt<br>
+HMXH+PP Sumqayit
+</p>
+
+</div>
+
+
+<div class="info">
+
+<small>İş saatı</small>
+
+<h3>🕘 09:00-dan</h3>
+
+<p>
+Məkana getməzdən əvvəl
+cari iş saatlarını yoxlamaq məsləhətdir.
+</p>
+
+</div>
+
+
+<div class="info">
+
+<small>Qiymət</small>
+
+<h3>₼1–20</h3>
+
+<p>
+Adambaşı təxmini qiymət aralığı.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section>
+
+<div class="container">
+
+<div class="features">
+
+<div class="feature">
+<b>☕ Qəhvə</b>
+<span>Great coffee</span>
+</div>
+
+<div class="feature">
+<b>📶 Wi-Fi</b>
+<span>Pulsuz Wi-Fi</span>
+</div>
+
+<div class="feature">
+<b>🌿 Açıq hava</b>
+<span>Outdoor seating</span>
+</div>
+
+<div class="feature">
+<b>👨‍👩‍👧 Ailəvi</b>
+<span>Uşaqlar üçün uyğun</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="cta">
+
+<div>
+
+<div class="small-title" style="color:#e0a77e">
+Gəl, qəhvə içək
+</div>
+
+<h2>Ensey-də görüşək?</h2>
+
+<p>
+Menyuya bax, Instagram-a keç və ya Wolt-dan sifariş et.
+</p>
+
+</div>
+
+
+<div class="buttons">
+
+<a
+href="https://www.instagram.com/enseycafe"
+target="_blank"
+class="button">
+Instagram ↗
+</a>
+
+<a
+href="https://wolt.com/az/aze/sumgait/restaurant/ensey-kafe"
+target="_blank"
+class="button">
+Wolt
+</a>
+
+<a
+href="https://www.google.com/maps/search/?api=1&query=Ensey%20Cafe%20Sumqayit"
+target="_blank"
+class="button">
+Xəritə
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container footer">
+
+<div>
+© 2026 Ensey Cafe
+</div>
+
+<div>
+Bulvar küçəsi · Nəsimi park · Sumqayıt
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+function filterMenu(category,button){
+
+document
+.querySelectorAll(".category")
+.forEach(btn=>{
+btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+document
+.querySelectorAll("#menu .item")
+.forEach(item=>{
+
+if(category==="all" ||
+item.classList.contains(category)){
+
+item.style.display="flex";
+
+}else{
+
+item.style.display="none";
+
+}
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
